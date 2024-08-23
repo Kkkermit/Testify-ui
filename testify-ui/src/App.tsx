@@ -1,0 +1,19 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./styles/index.css";
+import Landing from "./components/landing-page/landing";
+
+function App() {
+	return (
+		<>
+			<div className="container" data-testid="render-ui">
+				<Router>
+					<Routes>
+						<Route path="/" element={<Landing />} />
+					</Routes>
+				</Router>
+			</div>
+		</>
+	);
+}
+
+export default App;

@@ -1,0 +1,77 @@
+:root {
+	font-family: Satoshi;
+	line-height: 1.5;
+
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+	font-family: "Satoshi";
+	src: url("//cdn.fontshare.com/wf/NWBQYJIM7GCZ5XWD7D26ARB3VDY55ZRT/K63EV2KZIGKLE7RANQ2U42S6SVHU5RJ7/X6XYTKIVDUW7GZTZPZNN4EUM5KH54KHF.woff2")
+			format("woff2"),
+		url("//cdn.fontshare.com/wf/NWBQYJIM7GCZ5XWD7D26ARB3VDY55ZRT/K63EV2KZIGKLE7RANQ2U42S6SVHU5RJ7/X6XYTKIVDUW7GZTZPZNN4EUM5KH54KHF.woff")
+			format("woff"),
+		url("//cdn.fontshare.com/wf/NWBQYJIM7GCZ5XWD7D26ARB3VDY55ZRT/K63EV2KZIGKLE7RANQ2U42S6SVHU5RJ7/X6XYTKIVDUW7GZTZPZNN4EUM5KH54KHF.ttf")
+			format("truetype");
+	font-weight: 300 900;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Array";
+	src: url("//cdn.fontshare.com/wf/4QBZHM3FOPYBI67YBLLWZV6ZYIUQTKEE/RXSUFPNEA6YXGQDMHMP3OODY6UWXRJBM/C6VM2RT4EU2NNT5XZWVYHR7WOIOGM4EU.woff2")
+			format("woff2"),
+		url("//cdn.fontshare.com/wf/4QBZHM3FOPYBI67YBLLWZV6ZYIUQTKEE/RXSUFPNEA6YXGQDMHMP3OODY6UWXRJBM/C6VM2RT4EU2NNT5XZWVYHR7WOIOGM4EU.woff")
+			format("woff"),
+		url("//cdn.fontshare.com/wf/4QBZHM3FOPYBI67YBLLWZV6ZYIUQTKEE/RXSUFPNEA6YXGQDMHMP3OODY6UWXRJBM/C6VM2RT4EU2NNT5XZWVYHR7WOIOGM4EU.ttf")
+			format("truetype");
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+body {
+	animation: fadeIn 1s ease-in-out forwards;
+	scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+body::-webkit-scrollbar {
+	width: 20px;
+}
+
+body::-webkit-scrollbar-track {
+	background: #000000;
+}
+
+body::-webkit-scrollbar-thumb {
+	border: 5px solid #1b1b1f;
+	background: hsla(0, 0%, 100%, 0.1);
+	border-radius: 20px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: hsla(0, 0%, 100%, 0.15);
+}
+
+body::-webkit-scrollbar-button {
+	height: 60px;
+}
+
+.container {
+	padding: 0;
+	opacity: 0;
+	animation: fadeIn 1.5s ease-in-out forwards;
+	z-index: 1;
+}
