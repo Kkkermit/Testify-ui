@@ -1,4 +1,3 @@
-/* Light mode styles */
 .light {
 	background-color: #ffffff;
 	color: #000000;
@@ -106,4 +105,10 @@ input:checked + .slider .sun {
 
 input:checked + .slider .moon {
 	opacity: 0;
+}
+
+.landing-header-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
