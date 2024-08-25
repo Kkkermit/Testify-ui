@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../../styles/landing.css";
-import { ThemeContext } from "./theme-provider/theme-context";
+import { ThemeContext } from "./theme-provider/theme-context/theme-context";
 import moonSVG from "../../assets/moon-slider.svg";
 import sunSVG from "../../assets/sun-slider.svg";
 
