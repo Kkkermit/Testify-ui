@@ -47,4 +47,16 @@ describe("Landing Page Translations", () => {
 			"Le seul bot Discord dont votre communauté aura besoin. Testify est un bot riche en fonctionnalités qui vous aidera à modérer, à engager et bien plus encore.",
 		);
 	});
+
+	it("should translate the button", () => {
+		i18n.changeLanguage("en");
+		const enButton = translateLandingKey("button");
+		expect(enButton).toBe("Click to enter");
+		i18n.changeLanguage("es");
+		const esButton = translateLandingKey("button");
+		expect(esButton).toBe("Haga clic para entrar");
+		i18n.changeLanguage("fr");
+		const frButton = translateLandingKey("button");
+		expect(frButton).toBe("Cliquez pour entrer");
+	});
 });
