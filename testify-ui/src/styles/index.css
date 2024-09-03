@@ -2,17 +2,40 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@keyframes gloopy {
+@keyframes wave {
 	0% {
-		background-color: white;
+		color: rgb(199, 148, 192);
 	}
-	33% {
-		background-color: black;
-	}
-	66% {
-		background-color: rgb(100, 100, 223);
+	50% {
+		color: rgb(193, 57, 193);
 	}
 	100% {
-		background-color: white;
+		color: rgb(199, 148, 192);
 	}
 }
+
+.wave {
+	animation: wave 2s infinite;
+}
+
+@layer components {
+	.particle {
+		@apply absolute bg-purple-500 w-1 h-1 rounded-full;
+		animation: particle-animation 2s infinite linear;
+	}
+}
+
+@keyframes particle-animation {
+	0% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(100px, 100px);
+		opacity: 0;
+	}
+}
+
+/* body {
+	background-color: rgb(51 65 85);
+} */
