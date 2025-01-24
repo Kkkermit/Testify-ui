@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchBotStats } from "../../../utils/api";
 import config from "../../../config/config";
+import "../../../styles/index.css";
+import CommandSearch from "../command-search/command-search";
 
 interface BotStats {
 	servers: number;
@@ -50,7 +52,7 @@ const HeroSection: React.FC = () => {
 	const isLoading = loading || !stats || (stats.servers === 0 && stats.users === 0);
 
 	return (
-		<div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
+		<div className="relative z-10 flex flex-col items-center justify-center min-h-screen pt-32 text-center px-4">
 			<div className="animate-fade-in-up">
 				<h1
 					className="
@@ -139,6 +141,132 @@ const HeroSection: React.FC = () => {
 						Discord
 					</a>
 				</div>
+			</div>
+			<div className="mt-16 w-full">
+				<CommandSearch
+					commands={[
+						{
+							name: "/help",
+							description: "Shows all available commands",
+							category: "Utility",
+						},
+						{
+							name: "/ping",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/server",
+							description: "Shows server information",
+							category: "Utility",
+						},
+						{
+							name: "/gelp",
+							description: "Shows all available commands",
+							category: "Utility",
+						},
+						{
+							name: "/aing",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/nerver",
+							description: "Shows server information",
+							category: "Utility",
+						},
+						{
+							name: "/kelp",
+							description: "Shows all available commands",
+							category: "Utility",
+						},
+						{
+							name: "/ning",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/cerver",
+							description: "Shows server information",
+							category: "Utility",
+						},
+						{
+							name: "/melp",
+							description: "Shows all available commands",
+							category: "Utility",
+						},
+						{
+							name: "/qing",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/merver",
+							description: "Shows server information",
+							category: "Moderation",
+						},
+						{
+							name: "/lelp",
+							description: "Shows all available commands",
+							category: "Community",
+						},
+						{
+							name: "/ging",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/yerver",
+							description: "Shows server information",
+							category: "Utility",
+						},
+						{
+							name: "/kkelp",
+							description: "Shows all available commands",
+							category: "Utility",
+						},
+						{
+							name: "/uing",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/berver",
+							description: "Shows server information",
+							category: "Utility",
+						},
+						{
+							name: "/erelp",
+							description: "Shows all available commands",
+							category: "Utility",
+						},
+						{
+							name: "/sding",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/seasdrver",
+							description: "Shows server information",
+							category: "Utility",
+						},
+						{
+							name: "/hsgelp",
+							description: "Shows all available commands",
+							category: "Utility",
+						},
+						{
+							name: "/pidrgtng",
+							description: "Check the bot's latency",
+							category: "Utility",
+						},
+						{
+							name: "/serawdver",
+							description: "Shows server information",
+							category: "Utility",
+						},
+					]}
+				/>
 			</div>
 		</div>
 	);
