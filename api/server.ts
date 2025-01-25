@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
+const startTime = Date.now();
 
 const app = express();
 const client = new Client({
@@ -57,8 +58,13 @@ app.get("/api/bot", async (_, res) => {
 	});
 });
 
+const loadTime = Date.now() - startTime;
+console.log(`                                                                                              `);
+console.log(`  \x1b[1m\x1b[32mSERVER\x1b[0m \x1b[32mAPI server\x1b[0m ready in \x1b[1m${loadTime}\x1b[0m ms`);
+console.log(`                                                                                              `);
+
 client.once("ready", () => {
-	console.log("Bot is ready!");
+	console.log("  \x1b[1m\x1b[32m➜ \x1b[0m\x1b[1m Bot\x1b[0m:     bot has connected!");
 	client.user?.setStatus("dnd");
 	updateCache();
 	setInterval(updateCache, 300000);
@@ -67,6 +73,6 @@ client.once("ready", () => {
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-	console.log(`API running on port ${PORT}`);
+	console.log(`  \x1b[1m\x1b[32m➜ \x1b[0m\x1b[1m Server\x1b[0m:  API running on port \x1b[0m\x1b[1m${PORT}\x1b[0m`);
 	client.login(process.env.DISCORD_TOKEN);
 });
