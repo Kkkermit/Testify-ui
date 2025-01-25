@@ -64,7 +64,7 @@ console.log(`  \x1b[1m\x1b[32mSERVER\x1b[0m \x1b[32mAPI server\x1b[0m ready in \
 console.log(`                                                                                              `);
 
 client.once("ready", () => {
-	console.log("  \x1b[1m\x1b[32m➜ \x1b[0m\x1b[1m Bot\x1b[0m:     bot has connected!");
+	console.log("  \x1b[32m➜ \x1b[0m\x1b[1m Bot\x1b[0m:     bot has connected!");
 	client.user?.setStatus("dnd");
 	updateCache();
 	setInterval(updateCache, 300000);
@@ -73,6 +73,6 @@ client.once("ready", () => {
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-	console.log(`  \x1b[1m\x1b[32m➜ \x1b[0m\x1b[1m Server\x1b[0m:  API running on port \x1b[0m\x1b[1m${PORT}\x1b[0m`);
+	console.log(`  \x1b[32m➜ \x1b[0m\x1b[1m Server\x1b[0m:  API running on port \x1b[0m\x1b[1m${PORT}\x1b[0m`);
 	client.login(process.env.DISCORD_TOKEN);
 });
