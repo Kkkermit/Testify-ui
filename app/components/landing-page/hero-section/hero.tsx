@@ -142,8 +142,20 @@ const HeroSection: React.FC = () => {
 				</div>
 			</div>
 
-			<div className="w-full mt-48 mb-20">
+			<div className="w-full mt-64">
+				<div className="relative w-1/4 mx-auto">
+					<hr
+						className="border-none h-2 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 
+                    mb-16 bg-[size:200%_auto] animate-[gradientMove_3s_ease-in-out_infinite]"
+					/>
+				</div>
 				<PopularCommandsSection />
+				<div className="relative w-1/4 mx-auto">
+					<hr
+						className="border-none h-2 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 
+                    mt-16 bg-[size:200%_auto] animate-[gradientMove_3s_ease-in-out_infinite]"
+					/>
+				</div>
 			</div>
 
 			<div className="mt-16 w-full">
