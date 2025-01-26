@@ -12,3 +12,23 @@
 		transform: translateY(0);
 	}
 }
+
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #1f2937;
+	border-radius: 6px;
+	border: 2px solid #607094;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #000000;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #000000;
+	border-radius: 6px;
+}
