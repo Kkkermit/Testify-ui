@@ -1,15 +1,40 @@
 import express from "express";
 import { Client, GatewayIntentBits } from "discord.js";
+import { REST } from "@discordjs/rest";
 import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
 const startTime = Date.now();
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+
+async function getOAuth2Token() {
+	const params = new URLSearchParams({
+		client_id: CLIENT_ID!,
+		client_secret: CLIENT_SECRET!,
+		grant_type: "client_credentials",
+		scope: "identify applications.commands.read",
+	});
+
+	const response = await fetch("https://discord.com/api/v10/oauth2/token", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded",
+		},
+		body: params,
+	});
+
+	return await response.json();
+}
+
 const app = express();
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
+
+const rest = new REST({ version: "10" });
 
 app.use(cors());
 app.use(express.json());
@@ -115,7 +140,14 @@ client.once("ready", () => {
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
 	console.log(`  \x1b[32m➜ \x1b[0m\x1b[1m Server\x1b[0m:  API running on port \x1b[0m\x1b[1m${PORT}\x1b[0m`);
-	client.login(process.env.DISCORD_TOKEN);
+	try {
+		const { access_token } = await getOAuth2Token();
+		rest.setToken(access_token);
+		await client.login(process.env.DISCORD_TOKEN);
+	} catch (error) {
+		console.error("Failed to initialize client:", error);
+		process.exit(1);
+	}
 });
