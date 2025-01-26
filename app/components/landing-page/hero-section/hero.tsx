@@ -3,6 +3,7 @@ import { fetchBotStats } from "../../../utils/api";
 import config from "../../../config/config";
 import "../../../styles/index.css";
 import CommandSearch from "../command-search/command-search";
+import PopularCommandsSection from "../popular-commands/popular-commands";
 
 interface BotStats {
 	servers: number;
@@ -52,14 +53,13 @@ const HeroSection: React.FC = () => {
 	const isLoading = loading || !stats || (stats.servers === 0 && stats.users === 0);
 
 	return (
-		<div className="relative z-10 flex flex-col items-center justify-center min-h-screen pt-32 text-center px-4">
+		<div className="mt-48 relative z-10 flex flex-col items-center justify-center min-h-screen pt-32 text-center px-4">
 			<div className="animate-fade-in-up">
 				<h1
 					className="
 						relative
 						text-6xl md:text-7xl lg:text-8xl 
 						font-bold 
-						animate-bounce-in-down
 						mb-6
 						bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400
 						bg-[size:200%_auto]
@@ -69,12 +69,11 @@ const HeroSection: React.FC = () => {
 						hover:scale-105
 						transition-transform
 						duration-300
-						cursor-default
-					"
+						cursor-default"
 				>
 					{config.name}
 				</h1>
-				<p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{config.description}</p>
+				<p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto mt-12">{config.description}</p>
 				<p className="text-sm text-gray-400 mb-4">Version {config.version}</p>
 
 				{isLoading ? (
@@ -142,6 +141,11 @@ const HeroSection: React.FC = () => {
 					</a>
 				</div>
 			</div>
+
+			<div className="w-full mt-48 mb-20">
+				<PopularCommandsSection />
+			</div>
+
 			<div className="mt-16 w-full">
 				<CommandSearch
 					commands={[

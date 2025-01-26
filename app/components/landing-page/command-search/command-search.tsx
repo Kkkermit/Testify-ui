@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { debounce } from "lodash";
 import "../../../styles/index.css";
+import config from "../../../config/config";
 
 interface Command {
 	name: string;
@@ -70,6 +71,14 @@ const CommandSearch: React.FC<CommandSearchProps> = ({ commands }) => {
 
 	return (
 		<div className="w-full max-w-6xl mx-auto px-4 py-12">
+			<h2
+				className="text-4xl font-bold mb-14 text-center
+                    bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400
+                    bg-[size:200%_auto] animate-[gradientMove_3s_ease-in-out_infinite]
+                    bg-clip-text text-transparent"
+			>
+				{config.name}'s Commands
+			</h2>
 			<div className="flex gap-4 mb-8">
 				<div className="relative flex-1">
 					<input

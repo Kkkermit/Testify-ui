@@ -1,6 +1,12 @@
 import { fetchGitHubVersion } from "../utils/github-api";
 import botConfig from "../config/config.json" assert { type: "json" };
 
+export interface PopularCommand {
+	name: string;
+	uses: number;
+	description: string;
+}
+
 interface BotConfig {
 	name: string;
 	description: string;
@@ -21,6 +27,7 @@ interface BotConfig {
 	stats: {
 		commands: number;
 	};
+	popularCommands: PopularCommand[];
 }
 
 let botInfo = {
@@ -65,6 +72,7 @@ const config: BotConfig = {
 	stats: {
 		commands: botInfo.commandCount,
 	},
+	popularCommands: [],
 };
 
 export default config;
