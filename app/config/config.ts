@@ -1,34 +1,6 @@
 import { fetchGitHubVersion } from "../utils/github-api";
-import botConfig from "../config/config.json" assert { type: "json" };
-
-export interface PopularCommand {
-	name: string;
-	uses: number;
-	description: string;
-}
-
-interface BotConfig {
-	name: string;
-	description: string;
-	tag: string;
-	clientId: string;
-	version: string;
-	urls: {
-		invite: string;
-		support: string;
-		github: string;
-		website: string;
-	};
-	social: {
-		discord: string;
-		twitter?: string;
-		github?: string;
-	};
-	stats: {
-		commands: number;
-	};
-	popularCommands: PopularCommand[];
-}
+import botConfig from "../config/json/config.json" assert { type: "json" };
+import { BotConfig } from "../types/types";
 
 let botInfo = {
 	name: "Testify",
@@ -39,17 +11,17 @@ let botInfo = {
 };
 
 (async () => {
-    try {
-        const [botResponse, version] = await Promise.all([fetch("http://localhost:3001/api/bot"), fetchGitHubVersion()]);
+	try {
+		const [botResponse, version] = await Promise.all([fetch("http://localhost:3001/api/bot"), fetchGitHubVersion()]);
 
-        const botData = await botResponse.json();
-        botInfo = {
-            ...botData,
-            version,
-        };
-    } catch (error) {
-        console.error("Failed to fetch bot info:", error);
-    }
+		const botData = await botResponse.json();
+		botInfo = {
+			...botData,
+			version,
+		};
+	} catch (error) {
+		console.error("Failed to fetch bot info:", error);
+	}
 })();
 
 const generateInviteUrl = (clientId: string) =>
