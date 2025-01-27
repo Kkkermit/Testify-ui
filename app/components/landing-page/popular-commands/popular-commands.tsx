@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PopularCommand } from "../../../config/config";
+import { PopularCommand } from "../../../types/types";
 import { fetchPopularCommands } from "../../../utils/api";
 
 const PopularCommandsSection: React.FC = () => {
