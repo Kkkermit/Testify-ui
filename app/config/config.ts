@@ -38,17 +38,19 @@ let botInfo = {
 	clientId: "",
 };
 
-try {
-	const [botResponse, version] = await Promise.all([fetch("http://localhost:3001/api/bot"), fetchGitHubVersion()]);
+(async () => {
+    try {
+        const [botResponse, version] = await Promise.all([fetch("http://localhost:3001/api/bot"), fetchGitHubVersion()]);
 
-	const botData = await botResponse.json();
-	botInfo = {
-		...botData,
-		version,
-	};
-} catch (error) {
-	console.error("Failed to fetch bot info:", error);
-}
+        const botData = await botResponse.json();
+        botInfo = {
+            ...botData,
+            version,
+        };
+    } catch (error) {
+        console.error("Failed to fetch bot info:", error);
+    }
+})();
 
 const generateInviteUrl = (clientId: string) =>
 	`https://discord.com/api/oauth2/authorize?client_id=${clientId}&permissions=8&scope=applications.commands+bot`;

@@ -3,13 +3,13 @@ import { debounce } from "lodash";
 import "../../../styles/index.css";
 import config from "../../../config/config";
 
-interface Command {
+export interface Command {
 	name: string;
 	description: string;
 	category?: string;
 }
 
-interface CommandSearchProps {
+export interface CommandSearchProps {
 	commands: Command[];
 }
 
@@ -149,6 +149,7 @@ const CommandSearch: React.FC<CommandSearchProps> = ({ commands }) => {
 						onClick={() => handlePageChange(1)}
 						disabled={currentPage === 1}
 						aria-label="First page"
+						data-testid="first-page-button"
 						className="px-4 py-2 rounded-lg bg-gray-800 text-white disabled:opacity-50 
                     disabled:cursor-not-allowed hover:bg-gray-700 transition-colors"
 					>
@@ -164,6 +165,7 @@ const CommandSearch: React.FC<CommandSearchProps> = ({ commands }) => {
 						onClick={() => handlePageChange(currentPage - 1)}
 						disabled={currentPage === 1}
 						aria-label="Previous page"
+						data-testid="previous-page-button"
 						className="px-4 py-2 rounded-lg bg-gray-800 text-white disabled:opacity-50 
                     disabled:cursor-not-allowed hover:bg-gray-700 transition-colors"
 					>
@@ -182,6 +184,7 @@ const CommandSearch: React.FC<CommandSearchProps> = ({ commands }) => {
 						onClick={() => handlePageChange(currentPage + 1)}
 						disabled={currentPage === totalPages}
 						aria-label="Next page"
+						data-testid="next-page-button"
 						className="px-4 py-2 rounded-lg bg-gray-800 text-white disabled:opacity-50 
                     disabled:cursor-not-allowed hover:bg-gray-700 transition-colors"
 					>
@@ -197,6 +200,7 @@ const CommandSearch: React.FC<CommandSearchProps> = ({ commands }) => {
 						onClick={() => handlePageChange(totalPages)}
 						disabled={currentPage === totalPages}
 						aria-label="Last page"
+						data-testid="last-page-button"
 						className="px-4 py-2 rounded-lg bg-gray-800 text-white disabled:opacity-50 
                     disabled:cursor-not-allowed hover:bg-gray-700 transition-colors"
 					>
