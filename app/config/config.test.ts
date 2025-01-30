@@ -37,7 +37,15 @@ describe("config", () => {
 		};
 		(global.fetch as jest.Mock).mockResolvedValue(mockBotResponse);
 
-		const { botInfo, generateInviteUrl, config } = await import("./config");
+		const { generateInviteUrl, config } = await import("./config");
+
+		let botInfo = {
+			name: "Testify",
+			tag: "Testify#0000",
+			commandCount: 0,
+			version: "1.0.0",
+			clientId: "",
+		};
 
 		expect(global.fetch).toHaveBeenCalledWith("http://localhost:3001/api/bot");
 

@@ -2,7 +2,7 @@ import { fetchGitHubVersion } from "../utils/github-api";
 import botConfig from "./json/config.json" assert { type: "json" };
 import { BotConfig } from "../types/types";
 
-export let botInfo = {
+let botInfo = {
 	name: "Testify",
 	tag: "Testify#0000",
 	commandCount: 0,

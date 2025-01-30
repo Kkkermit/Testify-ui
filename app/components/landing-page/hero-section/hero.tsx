@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchBotStats } from "../../../utils/api";
+import { fetchBotInfo, fetchBotStats } from "../../../utils/api";
 import config from "../../../config/config";
 import "../../../styles/index.css";
 import CommandSearch from "../command-search/command-search";
@@ -8,6 +8,7 @@ import PopularCommandsSection from "../popular-commands/popular-commands";
 interface BotStats {
 	servers: number;
 	users: number;
+	commandCount: number;
 	lastUpdated: number;
 }
 
@@ -29,26 +30,32 @@ const LoadingStats = () => (
 );
 
 const HeroSection: React.FC = () => {
-	const [stats, setStats] = useState<BotStats | null>(null);
-	const [loading, setLoading] = useState(true);
+    const [stats, setStats] = useState<BotStats | null>(null);
+    const [botInfo, setBotInfo] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		const loadStats = async () => {
-			try {
-				const data = await fetchBotStats();
-				if (data.servers > 0 || data.users > 0) {
-					setStats(data);
-					setLoading(false);
-				}
-			} catch (error) {
-				console.error("Failed to fetch stats:", error);
-			}
-		};
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const [statsData, botData] = await Promise.all([
+                    fetchBotStats(),
+                    fetchBotInfo()
+                ]);
+                
+                if (statsData.servers > 0 || statsData.users > 0) {
+                    setStats(statsData);
+                    setBotInfo(botData);
+                    setLoading(false);
+                }
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
 
-		loadStats();
-		const interval = setInterval(loadStats, 5000);
-		return () => clearInterval(interval);
-	}, []);
+        loadData();
+        const interval = setInterval(loadData, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
 	const isLoading = loading || !stats || (stats.servers === 0 && stats.users === 0);
 
@@ -89,7 +96,7 @@ const HeroSection: React.FC = () => {
 							<span className="text-gray-400">Users</span>
 						</div>
 						<div className="text-white">
-							<span className="block text-2xl font-bold">{config.stats.commands}</span>
+							<span className="block text-2xl font-bold">{botInfo?.commandCount || 0}</span>
 							<span className="text-gray-400">Commands</span>
 						</div>
 					</div>
